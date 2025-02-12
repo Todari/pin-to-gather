@@ -1,7 +1,7 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
-import { Coordinates, NaverMap } from "../../../types/map";
+import { useCallback, useRef} from "react";
+import { Coordinates, NaverMap } from "../../types/map";
 import Script from "next/script";
 
 interface Props {
@@ -11,10 +11,7 @@ interface Props {
 export function Map({ loc }: Props) {
   const mapRef = useRef<NaverMap>(null);
 
-  const [currentLoc, setCurrentLoc] = useState<Coordinates>();
-  const current = navigator.geolocation.getCurrentPosition((position) => {
-    console.log(position.coords.latitude, position.coords.longitude);
-  });
+  
 
   const initializeMap = useCallback((loc: Coordinates) => {
     const mapOptions = {
