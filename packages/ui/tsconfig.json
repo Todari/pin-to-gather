@@ -1,8 +1,16 @@
 {
   "extends": "@pin-to-gather/typescript-config/react-library.json",
   "compilerOptions": {
-    "outDir": "dist"
+    "jsxImportSource": "@emotion/react",
+    "baseUrl": ".",
+    "paths": {
+      "@/": ["src/"],
+      "@components/*": ["src/components/*"],
+      "@token/*": ["src/token/*"],
+      "@theme/*": ["src/theme/*"],
+      "@utils/*": ["src/utils/*"]
+    }
   },
-  "include": ["src"],
-  "exclude": ["node_modules", "dist"]
+  "include": ["."],
+  "exclude": ["node_modules", "dist", "build"]
 }

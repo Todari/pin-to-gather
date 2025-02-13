@@ -3,14 +3,18 @@
   "version": "0.0.0",
   "private": true,
   "exports": {
-    "./button": "./src/button.tsx",
-    "./card": "./src/card.tsx",
-    "./code": "./src/code.tsx"
+    "./component": "./src/component.tsx",
+    ".": {
+      "types": "./src/index.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    }
   },
   "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
     "lint": "eslint . --max-warnings 0",
-    "generate:component": "turbo gen react-component",
-    "check-types": "tsc --noEmit"
+    "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
   },
   "devDependencies": {
     "@pin-to-gather/eslint-config": "workspace:*",
@@ -20,9 +24,11 @@
     "@types/react": "19.0.8",
     "@types/react-dom": "19.0.3",
     "eslint": "^9.20.0",
+    "tsup": "^8.0.2",
     "typescript": "5.7.3"
   },
   "dependencies": {
+    "@emotion/react": "^11.14.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   }
