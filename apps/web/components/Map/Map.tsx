@@ -1,41 +1,53 @@
 "use client";
 
-import { useCallback, useEffect, useRef} from "react";
-import { Bounds, Coordinates, NaverMap } from "@type/map";
+import { useCallback, useEffect, useRef, useState} from "react";
+import { Bounds, Coordinates, MapInfo, NaverMap } from "@type/map";
 import Script from "next/script";
 
 interface Props {
   loc: Coordinates;
-  onChangeZoom?: (zoom: number) => void;
-  onChangeCenter?: (loc: Coordinates) => void;
-  onChangeBounds?: (bounds: Bounds) => void;
+  onChangeMapInfo: (mapInfo: MapInfo) => void;
 }
 
-export function Map({ loc, onChangeZoom, onChangeCenter, onChangeBounds }: Props) {
+export function Map({ loc, onChangeMapInfo }: Props) {
   const mapRef = useRef<NaverMap>(null);
+  // const [mapInfo, setMapInfo] = useState<MapInfo>({
+  //   center: loc,
+  //   bounds: {min: {x: 0, y: 0}, max: {x: 0, y: 0}},
+  //   zoom: 12,
+  // });
+
+  const handleChangeMapInfo = () => {
+    if (mapRef.current) {
+      onChangeMapInfo({
+        center: {x: mapRef.current.getCenter().x, y: mapRef.current.getCenter().y},
+        bounds: {min: {x: mapRef.current.getBounds().minX(), y: mapRef.current.getBounds().minY()}, max: {x: mapRef.current.getBounds().maxX(), y: mapRef.current.getBounds().maxY()}},
+        zoom: mapRef.current.getZoom(),
+      });
+    }
+  }
 
   const initializeMap = useCallback((loc: Coordinates) => {
     const mapOptions = {
-      center: new window.naver.maps.LatLng(loc[0], loc[1]),
+      center: new window.naver.maps.LatLng(loc.x, loc.y),
       zoom: 12,
     };
     const map = new window.naver.maps.Map("map", mapOptions);
     mapRef.current = map;
+    
+    // naver.maps.Event.addListener(map, 'zoom_changed', () => {
+    //   handleChangeMapInfo();
+    // });
 
-    naver.maps.Event.addListener(map, 'zoom_changed', (zoom) => {
-      onChangeZoom?.(zoom);
-    });
+    // naver.maps.Event.addListener(map, 'center_changed', () => {
+    //   handleChangeMapInfo();
+    // });
 
-    naver.maps.Event.addListener(map, 'center_changed', (center) => {
-      onChangeCenter?.([center.x, center.y]);
-    });
-
-    naver.maps.Event.addListener(map, 'bounds_changed', (bounds) => {
-      onChangeBounds?.([bounds.minX(), bounds.minY(), bounds.maxX(), bounds.maxY()]);
+    naver.maps.Event.addListener(map, 'bounds_changed', () => {
+      handleChangeMapInfo();
     });
   }, [loc]);
   
-
   return (
     <>
     <Script
