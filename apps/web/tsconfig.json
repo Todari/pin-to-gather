@@ -3,6 +3,10 @@
   "compilerOptions": {
     "paths": {
       "@/*": ["./src/*"],
+      "@api/*": ["./api/*"],
+      "@app/*": ["./app/*"],
+      "@components/*": ["./components/*"],
+      "@type/*": ["./type/*"],
     },
     "plugins": [
       {

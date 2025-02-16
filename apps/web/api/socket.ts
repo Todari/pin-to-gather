@@ -1,19 +1,23 @@
-// import { NextApiRequest, NextApiResponse } from "next";
-// import { Server } from "socket.io";
+export const connectSocket = (boardUuid: string, userId: string) => {
+  const socket = new WebSocket(`ws://localhost:8080/ws/uuid/${boardUuid}?userId=${userId}`);
 
-// export default function handler(req, res) {
-//   if (!res.socket.server.io) {
-//     console.log('Setting up socket.io');
-//     const io = new Server(res.socket.server);
-//     res.socket.server.io = io;
+  socket.onopen = () => {
+    console.log('WebSocket connection opened');
+  };
 
-//     io.on('connection', (socket) => {
-//       console.log('Client connected');
-//       socket.on('message', (msg) => {
-//         console.log('Message received:', msg);
-//         socket.broadcast.emit('message', msg);
-//       });
-//     });
-//   }
-//   res.end();
-// }
+  socket.onmessage = (event) => {
+    console.log("MESSAGE!!")
+    const data = JSON.parse(event.data);
+    console.log('WebSocket message received:', data);
+  };
+
+  socket.onclose = () => {
+    console.log('WebSocket connection closed');
+  };  
+
+  socket.onerror = (error) => {
+    console.error('WebSocket error:', error);
+  };
+
+  return socket;
+}
