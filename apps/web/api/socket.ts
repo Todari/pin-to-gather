@@ -6,7 +6,6 @@ export const connectSocket = (boardUuid: string, userId: string) => {
   };
 
   socket.onmessage = (event) => {
-    console.log("MESSAGE!!")
     const data = JSON.parse(event.data);
     console.log('WebSocket message received:', data);
   };
