@@ -1,5 +1,4 @@
 /** @jsxImportSource @emotion/react */
-
 import {Box} from '@pin-to-gather/ui';
 
 import type {Meta, StoryObj} from '@storybook/react';
