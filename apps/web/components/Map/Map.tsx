@@ -53,7 +53,6 @@ export function Map({boardUuid, userId}: Props) {
     }
     const lastMessage = messages[messages.length - 1];
     if (!lastMessage) return;
-    console.log(lastMessage.bounds)
     if (!checkExistClient(lastMessage.userId)) {
       const rect = new window.naver.maps.Rectangle({
         bounds: new window.naver.maps.LatLngBounds(new window.naver.maps.LatLng(lastMessage.bounds.min.y, lastMessage.bounds.min.x), new window.naver.maps.LatLng(lastMessage.bounds.max.y, lastMessage.bounds.max.x)),
