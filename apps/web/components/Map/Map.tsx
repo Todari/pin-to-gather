@@ -16,7 +16,7 @@ interface ClientRect {
 }
 
 export function Map({boardUuid, userId}: Props) {
-  const mapRef = useRef<NaverMap>(null);
+  const mapRef = useRef<NaverMap | null>(null);
   const rectRefs = useRef<ClientRect[]>([]);
   const {messages, sendMessage} = useWebSocket(`ws://localhost:8080/ws/uuid/${boardUuid}?userId=${userId}`);
 
