@@ -71,12 +71,21 @@ export function MapBoard({boardUuid, userId, ref: mapRef}: Props) {
         .find(rect => rect.userId === lastMessage.userId)
         ?.rect.setBounds(
           new window.naver.maps.LatLngBounds(
-            new window.naver.maps.LatLng(lastMessage.bounds.min.x, lastMessage.bounds.min.y),
-            new window.naver.maps.LatLng(lastMessage.bounds.max.x, lastMessage.bounds.max.y),
+            new window.naver.maps.LatLng(lastMessage.bounds.min.y, lastMessage.bounds.min.x),
+            new window.naver.maps.LatLng(lastMessage.bounds.max.y, lastMessage.bounds.max.x),
           ),
         );
     }
   }, [messages]);
+
+  useEffect(() => {
+    return () => {
+      rectRefs.current.forEach(({rect}) => {
+        rect.setMap(null);
+      });
+      rectRefs.current = [];
+    };
+  }, []);
 
   return (
     <>
