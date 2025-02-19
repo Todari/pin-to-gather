@@ -1,7 +1,7 @@
 'use client';
-import { DesignProvider } from '@pin-to-gather/ui';
-import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
-import { useState } from 'react';
+import {DesignProvider} from '@pin-to-gather/ui';
+import {QueryClientProvider, QueryClient} from '@tanstack/react-query';
+import {useState} from 'react';
 
 export default function ClientProvider({
   children,
@@ -22,9 +22,7 @@ export default function ClientProvider({
 
   return (
     <QueryClientProvider client={client}>
-      <DesignProvider>
-        {children}
-      </DesignProvider>
+      <DesignProvider>{children}</DesignProvider>
       {/* <ReactQueryDevtools initialIsOpen={false} /> */}
     </QueryClientProvider>
   );

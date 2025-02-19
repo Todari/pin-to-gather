@@ -9,7 +9,14 @@ interface UseInputProps<T> {
   autoFocus?: boolean;
 }
 
-export const useInput = <T extends string | number>({propsValue, onChange, onBlur, onFocus, autoFocus, inputRef}: UseInputProps<T>) => {
+export const useInput = <T extends string | number>({
+  propsValue,
+  onChange,
+  onBlur,
+  onFocus,
+  autoFocus,
+  inputRef,
+}: UseInputProps<T>) => {
   const [value, setValue] = useState<T>(propsValue);
   const [hasFocus, setHasFocus] = useState(inputRef.current === document.activeElement);
 

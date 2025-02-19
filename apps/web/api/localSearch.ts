@@ -1,5 +1,5 @@
-import { LocalSearchRequest, LocalSearchResponse } from "@type/services";
-import { http } from "@utils/http";
+import {LocalSearchRequest, LocalSearchResponse} from '@type/services';
+import {http} from '@utils/http';
 
 export const getLocalSearch = ({params}: {params: LocalSearchRequest}) => {
   const searchParams = new URLSearchParams({
@@ -14,5 +14,5 @@ export const getLocalSearch = ({params}: {params: LocalSearchRequest}) => {
       'X-Naver-Client-Id': process.env.NEXT_PUBLIC_NAVER_CLIENT_ID,
       'X-Naver-Client-Secret': process.env.NEXT_PUBLIC_NAVER_CLIENT_SECRET,
     },
-  })
-}
+  });
+};

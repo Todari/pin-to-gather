@@ -1,5 +1,5 @@
-import { SocketMessage } from "@type/services";
-import { useEffect, useRef, useState, useCallback } from "react";
+import {SocketMessage} from '@type/services';
+import {useEffect, useRef, useState, useCallback} from 'react';
 
 export const useWebSocket = (url: string) => {
   const socket = useRef<WebSocket | null>(null);
@@ -12,17 +12,17 @@ export const useWebSocket = (url: string) => {
       console.log('WebSocket connection opened');
     };
 
-    socket.current.onmessage = (event) => {
+    socket.current.onmessage = event => {
       const data = JSON.parse(event.data);
       console.log('WebSocket message received:', data);
-      setMessages((prevMessages) => [...prevMessages, data]);
+      setMessages(prevMessages => [...prevMessages, data]);
     };
 
     socket.current.onclose = () => {
       console.log('WebSocket connection closed');
     };
 
-    socket.current.onerror = (error) => {
+    socket.current.onerror = error => {
       console.error('WebSocket error:', error);
     };
 
@@ -37,5 +37,5 @@ export const useWebSocket = (url: string) => {
     }
   }, []);
 
-  return { messages, sendMessage };
+  return {messages, sendMessage};
 };

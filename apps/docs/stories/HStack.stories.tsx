@@ -3,8 +3,6 @@ import {HStack, Box} from '@pin-to-gather/ui';
 
 import type {Meta, StoryObj} from '@storybook/react';
 
-
-
 const meta = {
   title: 'patterns/HStack',
   component: HStack,

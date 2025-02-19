@@ -1,11 +1,11 @@
 import {Input, InputProps} from '@pin-to-gather/ui';
 
 import type {Meta, StoryObj} from '@storybook/react';
-import { useState } from 'react';
+import {useState} from 'react';
 
 const ControlledInput = (args: InputProps) => {
   const [value, setValue] = useState('');
-  return <Input value={value} onChange={(e) => setValue(e.target.value)} {...args} />;
+  return <Input value={value} onChange={e => setValue(e.target.value)} {...args} />;
 };
 
 const meta = {
@@ -46,7 +46,7 @@ const meta = {
     autoFocus: {
       description: '자동 포커스 여부를 설정합니다',
       control: {type: 'boolean'},
-    }
+    },
   },
   args: {
     labelText: '라벨',
