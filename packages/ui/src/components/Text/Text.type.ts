@@ -6,7 +6,7 @@ import TYPOGRAPHY from '@token/typography';
 export type TextSize = keyof typeof TYPOGRAPHY;
 
 export interface TextStyleProps {
-  size?: TextSize;
+  textSize?: TextSize;
   textColor?: ColorKeys;
   responsive?: boolean;
 }

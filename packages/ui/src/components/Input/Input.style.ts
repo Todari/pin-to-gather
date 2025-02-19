@@ -85,7 +85,6 @@ export const inputBoxStyle = ({hasFocus, theme, hasError, inputSize = 'md'}: Inp
       justifyContent: 'space-between',
       gap: '1rem',
       background: theme.colors.grayContainer,
-      boxSizing: 'border-box',
     },
     sizeStyle[inputSize],
     borderStyle({hasFocus, theme, hasError}),
@@ -93,8 +92,20 @@ export const inputBoxStyle = ({hasFocus, theme, hasError, inputSize = 'md'}: Inp
   ]);
 };
 
-export const inputStyle = ({theme}: InputStyleProps) =>
-  css([
+export const inputStyle = ({theme, inputSize = 'md'}: InputStyleProps) => {
+  const sizeStyle = {
+    sm: css({
+      height: '0.75rem',
+    }),
+    md: css({
+      height: '1rem',
+    }),
+    lg: css({
+      height: '1.25rem',
+    }),
+  };
+
+  return css([
     {
       display: 'flex',
       width: '100%',
@@ -104,4 +115,6 @@ export const inputStyle = ({theme}: InputStyleProps) =>
         color: theme.colors.gray,
       },
     },
+    sizeStyle[inputSize],
   ]);
+};
