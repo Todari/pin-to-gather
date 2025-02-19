@@ -19,6 +19,7 @@ export const Input: React.FC<InputProps> = forwardRef<HTMLInputElement, InputPro
     onChange,
     placeholder,
     autoFocus = false,
+    inputSize = 'md',
     labelText,
     errorText = '',
     hasError,
@@ -62,7 +63,7 @@ export const Input: React.FC<InputProps> = forwardRef<HTMLInputElement, InputPro
           )}
         </div>
       )}
-      <div css={inputBoxStyle({theme, hasFocus, hasError})}>
+      <div css={inputBoxStyle({theme, hasFocus, hasError, inputSize})}>
         <input
           css={inputStyle({theme, hasFocus, hasError})}
           ref={inputRef}
