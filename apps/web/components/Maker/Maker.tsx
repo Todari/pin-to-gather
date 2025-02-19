@@ -11,7 +11,7 @@ export function Maker({item}: Props) {
         backgroundColor: 'red',
       }}
     >
-      {item.title.replace(/<b>/g, '').replace(/<\/b>/g, '')}
+      {item.title}
     </div>
   );
 }

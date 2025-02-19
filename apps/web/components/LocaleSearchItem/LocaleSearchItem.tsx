@@ -14,7 +14,9 @@ interface ItemProps {
 
 export function LocaleSearchItemList({query}: ListProps) {
   const {data} = useRequestGetLocalSearch(query);
-  return <VStack gap={4}>{data?.items.map((item: LocalItem) => <LocaleSearchItem item={item} />)}</VStack>;
+  return (
+    <VStack gap={4}>{data?.items.map((item: LocalItem) => <LocaleSearchItem key={item.title} item={item} />)}</VStack>
+  );
 }
 
 export function LocaleSearchItem({item}: ItemProps) {
