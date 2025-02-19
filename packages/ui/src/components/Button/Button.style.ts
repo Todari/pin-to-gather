@@ -2,6 +2,7 @@ import {css} from '@emotion/react';
 import {Theme} from '@theme/theme.type';
 
 import {ButtonStyleProps, ButtonSize, ButtonVariants, ButtonDisplay} from './Button.type';
+import { setDarker, setLighter } from '@utils/colors';
 
 export const buttonContentStyle = css({
   display: 'flex',
@@ -12,13 +13,13 @@ export const buttonContentStyle = css({
 
 export const buttonStyle = (props: Required<ButtonStyleProps>) => {
   return css([
-    getButtonDefaultStyle(props.display, props.theme),
-    getButtonSizeStyle(props.size),
-    getButtonVariantsStyle(props.variants, props.theme),
+    buttonDefaultStyle(props.display),
+    buttonSizeStyle(props.buttonSize),
+    buttonVariantsStyle(props.variants, props.theme),
   ]);
 };
 
-const getButtonDefaultStyle = (display: ButtonDisplay, theme: Theme) =>
+const buttonDefaultStyle = (display: ButtonDisplay) =>
   css({
     display: display === 'full' ? 'flex' : 'block',
     width: display === 'full' ? '100%' : 'auto',
@@ -34,19 +35,19 @@ const getButtonDefaultStyle = (display: ButtonDisplay, theme: Theme) =>
     },
   });
 
-const getHoverAndActiveBackground = (color: string) =>
+const hoverAndActiveStyle = (color: string) =>
   css({
-    // ':not(:disabled)': {
-    //   '&:hover': {
-    //     background: setLighter(color, 0.15),
-    //   },
-    //   '&:active': {
-    //     background: setDarker(color, 0.15),
-    //   },
-    // },
+    ':not(:disabled)': {
+      '&:hover': {
+        background: setLighter(color, 0.15),
+      },
+      '&:active': {
+        background: setDarker(color, 0.15),
+      },
+    },
   });
 
-const getButtonSizeStyle = (size: ButtonSize) => {
+const buttonSizeStyle = (buttonSize: ButtonSize) => {
   const style = {
     sm: css({
       padding: '0.5rem 0.75rem',
@@ -68,28 +69,26 @@ const getButtonSizeStyle = (size: ButtonSize) => {
     }),
   };
 
-  return style[size];
+  return style[buttonSize];
 };
 
-const getButtonVariantsStyle = (variants: ButtonVariants, theme: Theme) => {
+const buttonVariantsStyle = (variants: ButtonVariants, theme: Theme) => {
   const style = {
     primary: [
       css({
         background: theme.colors.primary,
-        boxShadow: `0 0 0 2px ${theme.colors.secondary}`,
-        color: theme.colors.secondary,
+        color: theme.colors.onPrimary,
       }),
-      getHoverAndActiveBackground(theme.colors.primary),
+      hoverAndActiveStyle(theme.colors.primary),
     ],
     secondary: [
       css({
         background: theme.colors.secondary,
-        boxShadow: `0 0 0 2px ${theme.colors.secondary}`,
-        color: theme.colors.secondary,
+        color: theme.colors.onSecondary,
       }),
-      getHoverAndActiveBackground(theme.colors.secondary),
+      hoverAndActiveStyle(theme.colors.secondary),
     ],
-    ghost: [getHoverAndActiveBackground(theme.colors.white)],
+    ghost: [hoverAndActiveStyle(theme.colors.white)],
   };
 
   return style[variants];

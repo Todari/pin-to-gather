@@ -73,7 +73,7 @@ interface ClientRect {
         src={`https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=myuj2bw9tf`}
         onLoad={() => initializeMap()}
       ></Script>
-      <div id="map" style={{ width: "80vw", height: "80vh" }} />
+      <div id="map" style={{ width: "100vw", height: "100vh" }} />
     </>
   );
 }

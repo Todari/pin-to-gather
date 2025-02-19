@@ -6,9 +6,9 @@ export type ButtonDisplay = 'block' | 'full';
 
 export interface ButtonStyleProps {
   variants?: ButtonVariants;
-  size?: ButtonSize;
   display?: ButtonDisplay;
   theme?: Theme;
+  buttonSize?: ButtonSize;
 }
 
 export interface ButtonStateProps {

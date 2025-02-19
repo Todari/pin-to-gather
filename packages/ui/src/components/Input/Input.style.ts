@@ -1,3 +1,4 @@
+import { commonTransition, errorTextAnimationStyle, labelTextAnimationStyle } from '@components/style/animation';
 import {css} from '@emotion/react';
 import {Theme} from '@pin-to-gather/ui';
 
@@ -16,23 +17,24 @@ export const labelLayoutStyle = css({
 });
 
 interface InputStyleProps {
-  isFocus: boolean;
+  hasFocus: boolean;
   theme: Theme;
-  isError?: boolean;
+  hasError?: boolean;
+  hasValue? : boolean;
 }
 
-const getBorderStyle = ({theme, isError, isFocus}: InputStyleProps) =>
+const borderStyle = ({theme, hasError, hasFocus}: InputStyleProps) =>
   css({
-    boxShadow: isError
-      ? `0 0 0 2px ${theme.colors.primary} inset`
-      : `0 0 0 2px ${isFocus ? theme.colors.secondary : theme.colors.grayContainer} inset`,
+    boxShadow: hasError
+      ? `0 0 0 1px ${theme.colors.error} inset`
+      : hasFocus? `0 0 0 1px ${theme.colors.primary} inset` : "",
   });
 
-export const labelTextStyle = (theme: Theme, hasFocus: boolean, hasValue: boolean) =>
+export const labelTextStyle = ({theme, hasError, hasFocus, hasValue}: InputStyleProps) =>
   css([
     {
       height: '1.125rem',
-      color: theme.colors.secondary,
+      color: hasError? theme.colors.error : theme.colors.primary,
     },
     !hasFocus &&
       !hasValue && {
@@ -40,19 +42,19 @@ export const labelTextStyle = (theme: Theme, hasFocus: boolean, hasValue: boolea
         scale: '1.5',
         opacity: '0',
       },
-    // labelTextAnimationStyle(hasFocus, hasValue),
+    labelTextAnimationStyle(hasFocus, hasValue = false),
   ]);
 
-export const errorTextStyle = ({theme, isError}: InputStyleProps) =>
+export const errorTextStyle = ({theme, hasError}: InputStyleProps) =>
   css([
     {
       height: '1.125rem',
-      color: theme.colors.primary,
+      color: theme.colors.error,
     },
-    // errorTextAnimationStyle(isError ?? false),
+    errorTextAnimationStyle(hasError ?? false),
   ]);
 
-export const inputBoxStyle = ({isFocus, theme, isError}: InputStyleProps) =>
+export const inputBoxStyle = ({hasFocus, theme, hasError}: InputStyleProps) =>
   css([
     {
       display: 'flex',
@@ -63,18 +65,16 @@ export const inputBoxStyle = ({isFocus, theme, isError}: InputStyleProps) =>
       background: theme.colors.grayContainer,
       boxSizing: 'border-box',
     },
-    getBorderStyle({isFocus, theme, isError}),
-    // inputBoxAnimationStyle,
+    borderStyle({hasFocus, theme, hasError}),
+    commonTransition,
   ]);
-
-// export const inputBoxAnimationStyle = commonTransition;
 
 export const inputStyle = ({theme}: InputStyleProps) =>
   css([
     {
       display: 'flex',
       width: '100%',
-      color: theme.colors.secondary,
+      color: theme.colors.black,
       fontSize: '1.25rem',
       fontWeight: '700',
 
@@ -82,5 +82,4 @@ export const inputStyle = ({theme}: InputStyleProps) =>
         color: theme.colors.gray,
       },
     },
-    // {...theme.typography.body},
   ]);

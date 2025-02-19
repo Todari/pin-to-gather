@@ -12,9 +12,9 @@ export const labelTextAnimationStyle = (hasFocus: boolean, hasValue: boolean) =>
     ...commonTransition,
   });
 
-export const errorTextAnimationStyle = (isError: boolean) =>
+export const errorTextAnimationStyle = (hasError: boolean) =>
   css({
-    opacity: isError ? '1' : '0',
+    opacity: hasError ? '1' : '0',
 
     ...commonTransition,
   });

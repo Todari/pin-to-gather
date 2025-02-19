@@ -51,20 +51,20 @@ export const Input: React.FC<InputProps> = forwardRef<HTMLInputElement, InputPro
       {(labelText || errorText) && (
         <div css={labelLayoutStyle}>
           {labelText && (
-            <Text size="caption" css={labelTextStyle(theme, hasFocus, hasValue)}>
+            <Text size="caption" css={labelTextStyle({theme, hasFocus, hasValue})}>
               {hasFocus || hasValue ? labelText : ''}
             </Text>
           )}
           {errorText && (
-            <Text size="caption" css={errorTextStyle({theme, isError: hasError ?? false, isFocus: hasFocus})}>
+            <Text size="caption" css={errorTextStyle({theme, hasError, hasFocus})}>
               {errorText}
             </Text>
           )}
         </div>
       )}
-      <div css={inputBoxStyle({theme, isFocus: hasFocus, isError: hasError ?? false})}>
+      <div css={inputBoxStyle({theme, hasFocus, hasError})}>
         <input
-          css={inputStyle({theme, isFocus: hasFocus, isError: hasError ?? false})}
+          css={inputStyle({theme, hasFocus, hasError})}
           ref={inputRef}
           value={value}
           onChange={onChange}

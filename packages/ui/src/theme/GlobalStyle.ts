@@ -140,7 +140,5 @@ export const GlobalStyle = css`
       sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    max-width: 768px;
-    margin: 0 auto;
   }
 `;

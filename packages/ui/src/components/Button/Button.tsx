@@ -7,7 +7,7 @@ import {ButtonProps} from './Button.type';
 import {useTheme} from '@theme/DesignProvider';
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button(
-  {variants = 'primary', size = 'md', display = 'block', disabled, children, isLoading, ...htmlProps}: ButtonProps,
+  {variants = 'primary', buttonSize = 'md', display = 'block', disabled, children, isLoading, ...htmlProps}: ButtonProps,
   ref?: React.Ref<HTMLButtonElement>,
 ) {
   const {theme} = useTheme();
@@ -18,7 +18,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button
 
   return (
     <button
-      css={buttonStyle({variants, size, display, theme})}
+      css={buttonStyle({variants, buttonSize, display, theme})}
       ref={buttonRef}
       {...htmlProps}
       disabled={isLoading ? true : disabled}

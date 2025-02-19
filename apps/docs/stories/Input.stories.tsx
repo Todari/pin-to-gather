@@ -1,16 +1,28 @@
-import {Input} from '@pin-to-gather/ui';
+import {Input, InputProps} from '@pin-to-gather/ui';
 
 import type {Meta, StoryObj} from '@storybook/react';
+import { useState } from 'react';
 
+const ControlledInput = (args: InputProps) => {
+  const [value, setValue] = useState('');
+  return <Input value={value} onChange={(e) => setValue(e.target.value)} {...args} />;
+};
 
 const meta = {
   title: 'Components/Input',
-  component: Input,
+  component: ControlledInput,
   tags: ['autodocs'],
   parameters: {
     layout: 'centered',
   },
   argTypes: {
+    value: {
+      description: '입력 필드의 값을 설정합니다',
+      control: {type: 'text'},
+    },
+    onChange: {
+      description: '입력값이 변경될 때 호출되는 함수입니다',
+    },
     labelText: {
       description: '입력 필드의 라벨을 설정합니다',
       control: {type: 'text'},
@@ -52,6 +64,7 @@ export const Default: Story = {
 
 export const WithError: Story = {
   args: {
+    value: '잘못된 값',
     labelText: '에러 상태',
     errorText: '에러가 발생했습니다',
     hasError: true,
@@ -62,12 +75,5 @@ export const WithDelete: Story = {
   args: {
     labelText: '삭제 버튼',
     onDelete: () => {},
-  },
-};
-
-export const AutoFocus: Story = {
-  args: {
-    labelText: '자동 포커스',
-    autoFocus: true,
   },
 };
