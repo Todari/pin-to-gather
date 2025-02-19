@@ -33,7 +33,7 @@ const borderStyle = ({theme, hasError, hasFocus}: InputStyleProps) =>
         : '',
   });
 
-export const labelTextStyle = ({theme, hasError, hasFocus, hasValue}: InputStyleProps) =>
+export const labelTextStyle = ({theme, hasError, hasFocus, hasValue = false}: InputStyleProps) =>
   css([
     {
       height: '1.125rem',
@@ -45,7 +45,7 @@ export const labelTextStyle = ({theme, hasError, hasFocus, hasValue}: InputStyle
         scale: '1.5',
         opacity: '0',
       },
-    labelTextAnimationStyle(hasFocus, (hasValue = false)),
+    labelTextAnimationStyle(hasFocus, hasValue),
   ]);
 
 export const errorTextStyle = ({theme, hasError}: InputStyleProps) =>

@@ -31,11 +31,13 @@ export const useInput = <T extends string | number>({
     setValue(propsValue);
   }, [propsValue]);
 
-  const handleClickDelete = (event: React.MouseEvent) => {
+  const handleClickDelete = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
     setValue('' as T);
     if (onChange) {
-      onChange({target: {value: ''}} as React.ChangeEvent<HTMLInputElement>);
+      const syntheticEvent = new Event('change', {bubbles: true}) as unknown as React.ChangeEvent<HTMLInputElement>;
+      Object.defineProperty(syntheticEvent, 'target', {value: {value: ''}});
+      onChange(syntheticEvent);
     }
     if (inputRef.current) {
       inputRef.current.focus();
