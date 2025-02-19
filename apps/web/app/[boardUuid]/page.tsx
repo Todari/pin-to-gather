@@ -21,20 +21,37 @@ export default function BoardPage() {
     setQuery(e.target.value);
   };
 
+  //TODO: header에서의 검색 결과와 동기화 하기
   const {data, isLoading} = useRequestGetLocalSearch(query);
 
-  for (const item of data?.items ?? []) {
-    new window.naver.maps.Marker({
-      position: coordToNaverLatLng(localMapXYToLatLng(item.mapy, item.mapx)),
-      map: mapRef.current ?? undefined,
-      title: item.title.replace(/<b>/g, '').replace(/<\/b>/g, ''),
-      icon: {
-        content: ReactDOMServer.renderToString(<Maker item={item} />),
-        size: new naver.maps.Size(22, 35),
-        anchor: new naver.maps.Point(11, 35),
-      },
+  const markers = useRef<naver.maps.Marker[]>([]);
+
+  useEffect(() => {
+    // 이전 마커들 제거
+    markers.current.forEach(marker => marker.setMap(null));
+    markers.current = [];
+
+    // 새로운 마커 생성
+    data?.items.forEach(item => {
+      const marker = new window.naver.maps.Marker({
+        position: coordToNaverLatLng(localMapXYToLatLng(item.mapy, item.mapx)),
+        map: mapRef.current ?? undefined,
+        title: item.title.replace(/<b>/g, '').replace(/<\/b>/g, ''),
+        icon: {
+          content: ReactDOMServer.renderToString(<Maker item={item} />),
+          size: new naver.maps.Size(22, 35),
+          anchor: new naver.maps.Point(11, 35),
+        },
+      });
+      markers.current.push(marker);
     });
-  }
+
+    // Cleanup markers on component unmount or before next effect run
+    return () => {
+      markers.current.forEach(marker => marker.setMap(null));
+      markers.current = [];
+    };
+  }, [data?.items]);
 
   return (
     <>
