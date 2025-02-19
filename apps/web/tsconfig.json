@@ -6,8 +6,10 @@
       "@api/*": ["./api/*"],
       "@app/*": ["./app/*"],
       "@components/*": ["./components/*"],
+      "@constants/*": ["./constants/*"],
+      "@hooks/*": ["./hooks/*"],
       "@type/*": ["./type/*"],
-      "@utils/*": ["./utils/*"],
+      "@utils/*": ["./utils/*"]
     },
     "plugins": [
       {
@@ -15,14 +17,6 @@
       }
     ]
   },
-  "include": [
-    "**/*.ts",
-    "**/*.tsx",
-    "next-env.d.ts",
-    "next.config.js",
-    ".next/types/**/*.ts"
-  ],
-  "exclude": [
-    "node_modules"
-  ]
+  "include": ["**/*.ts", "**/*.tsx", "next-env.d.ts", "next.config.js", ".next/types/**/*.ts"],
+  "exclude": ["node_modules"]
 }

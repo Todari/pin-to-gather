@@ -1,4 +1,4 @@
-import {LocalItem} from '@type/services';
+import {LocalItem} from '@type/model';
 
 interface Props {
   item: LocalItem;

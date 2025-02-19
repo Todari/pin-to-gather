@@ -1,12 +1,16 @@
 'use client';
 
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 import {useRouter} from 'next/navigation';
 import {Container, Input, VStack, Button} from '@pin-to-gather/ui';
+import {useRequestPostBoard} from '@hooks/useRequestPostBoard';
 
 export default function MainPage() {
   const [boardTitle, setBoardTitle] = useState<string>('');
+  const [errorMessage, setErrorMessage] = useState<string>('');
   const router = useRouter();
+
+  const {mutate: postBoard, data, isSuccess, isError, error} = useRequestPostBoard();
 
   const handleBoardTitleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setBoardTitle(event.target.value);
@@ -14,7 +18,18 @@ export default function MainPage() {
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    postBoard(boardTitle);
   };
+
+  useEffect(() => {
+    console.log(data, error);
+    if (isSuccess) {
+      router.push(`/${data?.uuid}`);
+    }
+    if (isError) {
+      setErrorMessage(error.message);
+    }
+  }, [isSuccess, data, isError, error]);
 
   return (
     <Container maxW={480}>

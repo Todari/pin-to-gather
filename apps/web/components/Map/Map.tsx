@@ -3,7 +3,7 @@
 import {useCallback, useEffect, useRef} from 'react';
 import {NaverMap, NaverRectangle} from '@type/map';
 import Script from 'next/script';
-import {useWebSocket} from '@api/useSocket';
+import {useWebSocket} from '../../hooks/useSocket';
 import {boundsToNaverBounds} from '@utils/map';
 
 interface Props {
@@ -19,7 +19,7 @@ interface ClientRect {
 
 export function Map({boardUuid, userId, ref: mapRef}: Props) {
   const rectRefs = useRef<ClientRect[]>([]);
-  const {messages, sendMessage} = useWebSocket(`ws://localhost:8080/ws/uuid/${boardUuid}?userId=${userId}`);
+  const {messages, sendMessage} = useWebSocket(`ws://localhost:8080/ws/${boardUuid}?userId=${userId}`);
 
   const handleChangeMapInfo = () => {
     if (mapRef.current) {
