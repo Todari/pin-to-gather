@@ -1,6 +1,6 @@
 import { commonTransition, errorTextAnimationStyle, labelTextAnimationStyle } from '@components/style/animation';
 import {css} from '@emotion/react';
-import {Theme} from '@pin-to-gather/ui';
+import {InputSize, Theme} from '@pin-to-gather/ui';
 
 export const inputLayoutStyle = css({
   display: 'flex',
@@ -21,6 +21,7 @@ interface InputStyleProps {
   theme: Theme;
   hasError?: boolean;
   hasValue? : boolean;
+  inputSize?: InputSize;
 }
 
 const borderStyle = ({theme, hasError, hasFocus}: InputStyleProps) =>
@@ -54,20 +55,40 @@ export const errorTextStyle = ({theme, hasError}: InputStyleProps) =>
     errorTextAnimationStyle(hasError ?? false),
   ]);
 
-export const inputBoxStyle = ({hasFocus, theme, hasError}: InputStyleProps) =>
-  css([
+export const inputBoxStyle = ({hasFocus, theme, hasError, inputSize = "md"}: InputStyleProps) =>{
+  const sizeStyle = {
+    sm: css({
+      padding: '0.5rem 0.75rem',
+      borderRadius: '0.375rem',
+      fontSize: '0.75rem',
+      fontWeight: '600',
+    }),
+    md: css({
+      padding: '0.75rem 1rem',
+      borderRadius: '0.5rem',
+      fontSize: '1rem',
+      fontWeight: '700',
+    }),
+    lg: css({
+      padding: '1rem 1.25rem',
+      borderRadius: '0.625rem',
+      fontSize: '1.25rem',
+      fontWeight: '700',
+    }),
+  }
+  
+  return css([
     {
       display: 'flex',
       justifyContent: 'space-between',
       gap: '1rem',
-      padding: '1rem 1.25rem',
-      borderRadius: '0.625rem',
       background: theme.colors.grayContainer,
       boxSizing: 'border-box',
     },
+    sizeStyle[inputSize],
     borderStyle({hasFocus, theme, hasError}),
     commonTransition,
-  ]);
+  ])};
 
 export const inputStyle = ({theme}: InputStyleProps) =>
   css([
@@ -75,8 +96,6 @@ export const inputStyle = ({theme}: InputStyleProps) =>
       display: 'flex',
       width: '100%',
       color: theme.colors.black,
-      fontSize: '1.25rem',
-      fontWeight: '700',
 
       '&::placeholder': {
         color: theme.colors.gray,

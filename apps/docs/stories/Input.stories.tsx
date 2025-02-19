@@ -23,6 +23,10 @@ const meta = {
     onChange: {
       description: '입력값이 변경될 때 호출되는 함수입니다',
     },
+    inputSize: {
+      description: '입력 필드의 크기를 설정합니다',
+      control: {type: 'select', options: ['sm', 'md', 'lg']},
+    },
     labelText: {
       description: '입력 필드의 라벨을 설정합니다',
       control: {type: 'text'},
@@ -71,9 +75,20 @@ export const WithError: Story = {
   },
 };
 
-export const WithDelete: Story = {
+export const Small: Story = {
   args: {
-    labelText: '삭제 버튼',
-    onDelete: () => {},
+    inputSize: 'sm',
+  },
+};
+
+export const Medium: Story = {
+  args: {
+    inputSize: 'md',
+  },
+};
+
+export const Large: Story = {
+  args: {
+    inputSize: 'lg',
   },
 };
