@@ -1,4 +1,3 @@
-```markdown
 # 핀투게더 (Pin-to-Gather)
 
 핀투게더는 사용자가 함께 지도를 공유하며 실시간으로 서로가 보고 있는 구역과 지역들을 참조하여 여행이나 만남 일정을 정할 수 있는 서비스입니다.
@@ -63,4 +62,3 @@ turbo build
 ## 문의
 
 질문이나 제안 사항이 있으시면 [이슈](https://github.com/Todari/pin-to-gather/issues) 페이지를 통해 문의해 주세요.
-```
