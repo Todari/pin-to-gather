@@ -26,10 +26,17 @@ export const getLocalSearch = ({params}: {params: LocalSearchRequest}) => {
     sort: params.sort ?? 'random',
   });
 
+  const clientId = process.env.NEXT_PUBLIC_NAVER_CLIENT_ID;
+  const clientSecret = process.env.NEXT_PUBLIC_NAVER_CLIENT_SECRET;
+
+  if (!clientId || !clientSecret) {
+    throw new Error('Naver API 인증 정보가 설정되지 않았습니다.');
+  }
+
   return http.get<LocalSearchResponse>(`/naver-api/v1/search/local.json?${searchParams.toString()}`, {
     headers: {
-      'X-Naver-Client-Id': process.env.NEXT_PUBLIC_NAVER_CLIENT_ID,
-      'X-Naver-Client-Secret': process.env.NEXT_PUBLIC_NAVER_CLIENT_SECRET,
+      'X-Naver-Client-Id': clientId,
+      'X-Naver-Client-Secret': clientSecret,
     },
   });
 };
