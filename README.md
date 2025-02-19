@@ -1,84 +1,66 @@
-# Turborepo starter
+```markdown
+# 핀투게더 (Pin-to-Gather)
 
-This Turborepo starter is maintained by the Turborepo core team.
+핀투게더는 사용자가 함께 지도를 공유하며 실시간으로 서로가 보고 있는 구역과 지역들을 참조하여 여행이나 만남 일정을 정할 수 있는 서비스입니다.
 
-## Using this example
+## 기술 스택
 
-Run the following command:
+Next.js, React, TypeScript, NaverMaps, WebSocket, Emotion, Turborepo, pnpm
+
+## 주요 기능
+
+- **지역 검색**: 특정 지역을 검색하여 관련 정보를 얻을 수 있습니다.
+- **실시간 지도 공유**: 사용자가 현재 보고 있는 지도의 구역을 다른 사용자와 실시간으로 공유할 수 있습니다.
+- **실시간 핀 공유**: 사용자가 현재 보고 있는 상호 및 건물, 주소를 다른 사용자와 실시간으로 공유할 수 있습니다.
+- **공유 핀 저장**: 지도에 참여한 모든 사용자에게 공유되는 핀들을 저장할 수 있습니다.
+- **일정 계획**: 지도의 공유 핀을 이용하여 여행이나 만남 일정을 계획할 수 있습니다.
+
+## 설치 및 실행
+
+### 요구 사항
+
+- Node.js 20.15.1 이상
+- pnpm
+
+### 설치
 
 ```sh
-npx create-turbo@latest
+git clone https://github.com/Todari/pin-to-gather.git
+cd pin-to-gather
+pnpm install
 ```
 
-## What's inside?
+### 개발 서버 실행
 
-This Turborepo includes the following packages/apps:
-
-### Apps and Packages
-
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `web`: another [Next.js](https://nextjs.org/) app
-- `@pin-to-gather/ui`: a stub React component library shared by both `web` and `docs` applications
-- `@pin-to-gather/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `@pin-to-gather/typescript-config`: `tsconfig.json`s used throughout the monorepo
-
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
-
-### Utilities
-
-This Turborepo has some additional tools already setup for you:
-
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
-
-### Build
-
-To build all apps and packages, run the following command:
-
-```
-cd my-turborepo
-pnpm build
+```sh
+turbo dev
 ```
 
-### Develop
+### 빌드
 
-To develop all apps and packages, run the following command:
-
-```
-cd my-turborepo
-pnpm dev
+```sh
+turbo build
 ```
 
-### Remote Caching
+## 디렉토리 구조
 
-> [!TIP]
-> Vercel Remote Cache is free for all plans. Get started today at [vercel.com](https://vercel.com/signup?/signup?utm_source=remote-cache-sdk&utm_campaign=free_remote_cache).
+- `apps/docs`: 웹 애플리케이션에 대한 문서
+- `apps/landing`: 랜딩 페이지
+- `apps/web`: 메인 웹 애플리케이션
+- `packages/ui`: 공통 UI 컴포넌트 라이브러리
+- `packages/eslint-config`: ESLint 설정
+- `packages/typescript-config`: TypeScript 설정
 
-Turborepo can use a technique known as [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
+## 기여 방법
 
-By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup?utm_source=turborepo-examples), then enter the following commands:
+1. 이슈를 생성합니다.
+2. 이 저장소를 포크합니다.
+3. 새로운 브랜치를 생성합니다. (`git checkout -b feature/#{이슈번호}`)
+4. 변경 사항을 커밋합니다. (`git commit -am 'Add new feature'`)
+5. 브랜치에 푸시합니다. (`git push origin feature/#{이슈번호}`)
+6. dev 브랜치로 Pull Request를 생성합니다.
 
+## 문의
+
+질문이나 제안 사항이 있으시면 [이슈](https://github.com/Todari/pin-to-gather/issues) 페이지를 통해 문의해 주세요.
 ```
-cd my-turborepo
-npx turbo login
-```
-
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
-
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
-
-```
-npx turbo link
-```
-
-## Useful Links
-
-Learn more about the power of Turborepo:
-
-- [Tasks](https://turbo.build/repo/docs/core-concepts/monorepos/running-tasks)
-- [Caching](https://turbo.build/repo/docs/core-concepts/caching)
-- [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching)
-- [Filtering](https://turbo.build/repo/docs/core-concepts/monorepos/filtering)
-- [Configuration Options](https://turbo.build/repo/docs/reference/configuration)
-- [CLI Usage](https://turbo.build/repo/docs/reference/command-line-reference)
