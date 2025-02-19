@@ -2,9 +2,24 @@
 import React from 'react';
 
 import {StackProps} from './Stack.type';
-import { stackStyle } from './Stack.style';
+import {stackStyle} from './Stack.style';
 
-export function Stack({children, gap = 0, direction = 'column', justify = 'center', align = 'center', w = 'auto', h = 'auto', p, m, br, b, bg, divider, ...props}: StackProps) {
+export function Stack({
+  children,
+  gap = 0,
+  direction = 'column',
+  justify = 'center',
+  align = 'center',
+  w = 'auto',
+  h = 'auto',
+  p,
+  m,
+  br,
+  b,
+  bg,
+  divider,
+  ...props
+}: StackProps) {
   const childrenArray = React.Children.toArray(children);
 
   return (

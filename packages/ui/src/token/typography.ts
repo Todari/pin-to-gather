@@ -1,4 +1,14 @@
-export type TypographyKey = 'head' | 'title' | 'subTitle' | 'bodyBold' | 'body' | 'smallBodyBold' | 'smallBody' | 'captionBold' | 'caption' | 'tiny';
+export type TypographyKey =
+  | 'head'
+  | 'title'
+  | 'subTitle'
+  | 'bodyBold'
+  | 'body'
+  | 'smallBodyBold'
+  | 'smallBody'
+  | 'captionBold'
+  | 'caption'
+  | 'tiny';
 export type Typography = Record<string, string>;
 export type TypographyTokens = Record<TypographyKey, Typography>;
 

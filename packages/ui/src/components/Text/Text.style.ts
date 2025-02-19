@@ -2,7 +2,7 @@ import {css} from '@emotion/react';
 import {Typography, TYPOGRAPHY} from '@token/typography';
 
 import type {TextStylePropsWithTheme} from './Text.type';
-import { ColorTokens } from '@token/colors';
+import {ColorTokens} from '@token/colors';
 
 export const getSizeStyling = ({size, textColor, theme, responsive}: Required<TextStylePropsWithTheme>) => {
   const getResponsiveStyle = (baseStyle: Typography) => {

@@ -2,7 +2,6 @@ import {COLORS, Text, TYPOGRAPHY} from '@pin-to-gather/ui';
 
 import type {Meta, StoryObj} from '@storybook/react';
 
-
 const meta = {
   title: 'Components/Text',
   component: Text,
@@ -28,7 +27,7 @@ const meta = {
     children: {
       description: '텍스트의 내용을 설정합니다',
       control: {type: 'text'},
-    }
+    },
   },
   args: {
     size: 'body',
@@ -86,7 +85,7 @@ export const SmallBody: Story = {
 
 export const SmallBodyBold: Story = {
   args: {
-    size: 'smallBodyBold', 
+    size: 'smallBodyBold',
     children: '작은 본문 볼드 텍스트',
   },
 };

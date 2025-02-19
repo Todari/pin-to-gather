@@ -1,4 +1,4 @@
-import { Bounds, Coordinates } from "./map";
+import {Bounds, Coordinates} from './map';
 
 export interface SocketMessage {
   userId: string;
@@ -8,7 +8,7 @@ export interface SocketMessage {
   zoom: number;
 }
 
-type Sort = 'random' | 'comment'
+type Sort = 'random' | 'comment';
 
 export interface LocalSearchRequest {
   query: string;
