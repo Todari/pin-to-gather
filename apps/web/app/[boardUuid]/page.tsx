@@ -1,7 +1,7 @@
 'use client';
 
 import {useParams} from 'next/navigation';
-import {Map} from '@components/Map/Map';
+import {MapBoard} from '@components/MapBoard/MapBoard';
 import {useEffect, useRef, useState} from 'react';
 import {NaverMap} from '@type/map';
 import {useRequestGetLocalSearch} from '../../hooks/useRequestGetLocalSearch';
@@ -39,7 +39,7 @@ export default function BoardPage() {
   return (
     <>
       <Header />
-      <Map ref={mapRef} boardUuid={boardUuid} userId={userId} />
+      <MapBoard ref={mapRef} boardUuid={boardUuid} userId={userId} />
     </>
   );
 }
