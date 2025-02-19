@@ -18,6 +18,7 @@ interface ClientRect {
 }
 
 const WS_BASE_URL = process.env.NEXT_PUBLIC_WS_BASE_URL;
+const NAVER_MAP_CLIENT_ID = process.env.NEXT_PUBLIC_NAVER_MAP_CLIENT_ID;
 
 export function MapBoard({boardUuid, userId, ref: mapRef}: Props) {
   const rectRefs = useRef<ClientRect[]>([]);
@@ -81,7 +82,7 @@ export function MapBoard({boardUuid, userId, ref: mapRef}: Props) {
     <>
       <Script
         strategy="afterInteractive"
-        src={`https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=myuj2bw9tf`}
+        src={`https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=${NAVER_MAP_CLIENT_ID}`}
         onLoad={() => initializeMap()}
       ></Script>
       <div id="map" style={{width: '100vw', height: '100vh'}} />
