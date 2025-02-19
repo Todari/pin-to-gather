@@ -1,13 +1,15 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState} from "react";
-import { Bounds, Coordinates, MapInfo, NaverMap, NaverRectangle } from "@type/map";
+import { useCallback, useEffect, useRef } from "react";
+import { NaverMap, NaverRectangle } from "@type/map";
 import Script from "next/script";
 import { useWebSocket } from "@api/useSocket";
+import { boundsToNaverBounds } from "@utils/map";
 
 interface Props {
   boardUuid: string;
   userId: string;
+  ref: React.RefObject<NaverMap | null>;
 }
 
 interface ClientRect {
@@ -15,12 +17,9 @@ interface ClientRect {
   rect: NaverRectangle;
 }
 
-export function Map({boardUuid, userId}: Props) {
-  const mapRef = useRef<NaverMap | null>(null);
+  export function Map({boardUuid, userId, ref: mapRef}: Props) {
   const rectRefs = useRef<ClientRect[]>([]);
   const {messages, sendMessage} = useWebSocket(`ws://localhost:8080/ws/uuid/${boardUuid}?userId=${userId}`);
-
-  const rectRef = useRef<NaverRectangle>(null);
 
   const handleChangeMapInfo = () => {
     if (mapRef.current) {
@@ -55,9 +54,7 @@ export function Map({boardUuid, userId}: Props) {
     if (!lastMessage) return;
     if (!checkExistClient(lastMessage.userId)) {
       const rect = new window.naver.maps.Rectangle({
-        bounds: new window.naver.maps.LatLngBounds(new window.naver.maps.LatLng(lastMessage.bounds.min.y, lastMessage.bounds.min.x), new window.naver.maps.LatLng(lastMessage.bounds.max.y, lastMessage.bounds.max.x)),
-        // fillColor: "#2C97E1",
-        // fillOpacity: 0.2,
+        bounds: boundsToNaverBounds(lastMessage.bounds),
         strokeColor: "#2C97E1",
         strokeWeight: 2,
         map: mapRef.current ?? undefined,

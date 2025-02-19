@@ -22,19 +22,16 @@ export interface LocalSearchResponse {
   total: number;
   start: number;
   display: number;
-  items: {
-    title: string;
-    link: string;
-  }[];
+  items: LocalItem[];
 }
 
 export interface LocalItem {
   title: string;
-  link: string;
-  category: string;
-  description: string;
-  telephone: string;
-  address: string;
+  link?: string;
+  category?: string;
+  description?: string;
+  telephone?: string;
+  address?: string;
   roadAddress: string;
   mapx: string;
   mapy: string;

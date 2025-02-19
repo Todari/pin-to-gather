@@ -1,4 +1,4 @@
-import { LocalSearchRequest } from "@type/services";
+import { LocalSearchRequest, LocalSearchResponse } from "@type/services";
 import { http } from "@utils/http";
 
 export const getLocalSearch = ({params}: {params: LocalSearchRequest}) => {
@@ -9,7 +9,7 @@ export const getLocalSearch = ({params}: {params: LocalSearchRequest}) => {
     sort: params.sort ?? 'random',
   });
 
-  return http.get(`/naver-api/v1/search/local.json?${searchParams.toString()}`, {
+  return http.get<LocalSearchResponse>(`/naver-api/v1/search/local.json?${searchParams.toString()}`, {
     headers: {
       'X-Naver-Client-Id': process.env.NEXT_PUBLIC_NAVER_CLIENT_ID,
       'X-Naver-Client-Secret': process.env.NEXT_PUBLIC_NAVER_CLIENT_SECRET,
