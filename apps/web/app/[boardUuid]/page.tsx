@@ -23,9 +23,7 @@ export default function BoardPage() {
   const {data, isLoading} = useRequestGetLocalSearch(query);
 
   for (const item of data?.items ?? []) {
-    console.log(item.title, coordToNaverLatLng(localMapXYToLatLng(item.mapy, item.mapx)));
-    console.log("map", new window.naver.maps.LatLng(37.3595704, 127.105399));
-    const marker = new window.naver.maps.Marker({
+    new window.naver.maps.Marker({
       position: coordToNaverLatLng(localMapXYToLatLng(item.mapy, item.mapx)),
       map: mapRef.current ?? undefined,
       title: item.title.replace(/<b>/g, "").replace(/<\/b>/g, ""),

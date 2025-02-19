@@ -15,7 +15,7 @@ const meta = {
       control: {type: 'select'},
       options: ['primary', 'secondary', 'ghost'],
     },
-    size: {
+    buttonSize: {
       description: '버튼의 크기를 설정합니다',
       control: {type: 'select'},
       options: ['sm', 'md', 'lg'],
@@ -36,7 +36,7 @@ const meta = {
   },
   args: {
     variants: 'primary',
-    size: 'md',
+    buttonSize: 'md',
     display: 'block',
     disabled: false,
     children: '버튼',
@@ -70,21 +70,21 @@ export const Ghost: Story = {
 
 export const Small: Story = {
   args: {
-    size: 'sm',
+    buttonSize: 'sm',
     children: '작은 버튼',
   },
 };
 
 export const Medium: Story = {
   args: {
-    size: 'md',
+    buttonSize: 'md',
     children: '중간 버튼',
   },
 };
 
 export const Large: Story = {
   args: {
-    size: 'lg',
+    buttonSize: 'lg',
     children: '큰 버튼',
   },
 };

@@ -1,8 +1,11 @@
 import {Theme} from '@theme/theme.type';
 
+export type InputSize = 'sm' | 'md' | 'lg';
+
 export interface InputStyleProps {
   theme?: Theme;
   hasError?: boolean;
+  inputSize?: InputSize;
 }
 
 export interface InputCustomProps {
