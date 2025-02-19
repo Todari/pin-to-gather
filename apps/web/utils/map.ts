@@ -6,8 +6,8 @@ export const localMapXYToLatLng = (mapX: string, mapY: string): Coordinates => {
 
 export const boundsToNaverBounds = (bounds: Bounds) => {
   return new window.naver.maps.LatLngBounds(
-    new window.naver.maps.LatLng(bounds.min.y, bounds.min.x),
-    new window.naver.maps.LatLng(bounds.max.y, bounds.max.x),
+    new window.naver.maps.LatLng(bounds.min.x, bounds.min.y),
+    new window.naver.maps.LatLng(bounds.max.x, bounds.max.y),
   );
 };
 
