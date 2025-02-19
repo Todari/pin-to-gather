@@ -52,12 +52,12 @@ export const Input: React.FC<InputProps> = forwardRef<HTMLInputElement, InputPro
       {(labelText || errorText) && (
         <div css={labelLayoutStyle}>
           {labelText && (
-            <Text size="caption" css={labelTextStyle({theme, hasFocus, hasValue})}>
+            <Text textSize="caption" css={labelTextStyle({theme, hasFocus, hasValue})}>
               {hasFocus || hasValue ? labelText : ''}
             </Text>
           )}
           {errorText && (
-            <Text size="caption" css={errorTextStyle({theme, hasError, hasFocus})}>
+            <Text textSize="caption" css={errorTextStyle({theme, hasError, hasFocus})}>
               {errorText}
             </Text>
           )}

@@ -15,19 +15,19 @@ export type TypographyTokens = Record<TypographyKey, Typography>;
 export const TYPOGRAPHY: TypographyTokens = {
   head: {
     fontFamily: 'Pretendard',
-    fontSize: '3rem',
+    fontSize: '2rem',
     lineHeight: '1.5',
     fontWeight: '700',
   },
   title: {
     fontFamily: 'Pretendard',
-    fontSize: '2rem',
+    fontSize: '1.5rem',
     lineHeight: '1.5',
     fontWeight: '700',
   },
   subTitle: {
     fontFamily: 'Pretendard',
-    fontSize: '1.5rem',
+    fontSize: '1.25rem',
     lineHeight: '1.5',
     fontWeight: '700',
   },
