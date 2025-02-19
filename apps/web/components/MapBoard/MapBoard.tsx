@@ -17,9 +17,11 @@ interface ClientRect {
   rect: NaverRectangle;
 }
 
-export function Map({boardUuid, userId, ref: mapRef}: Props) {
+const WS_BASE_URL = process.env.NEXT_PUBLIC_WS_BASE_URL;
+
+export function MapBoard({boardUuid, userId, ref: mapRef}: Props) {
   const rectRefs = useRef<ClientRect[]>([]);
-  const {messages, sendMessage} = useWebSocket(`ws://localhost:8080/ws/${boardUuid}?userId=${userId}`);
+  const {messages, sendMessage} = useWebSocket(`${WS_BASE_URL}/${boardUuid}?userId=${userId}`);
 
   const handleChangeMapInfo = () => {
     if (mapRef.current) {
