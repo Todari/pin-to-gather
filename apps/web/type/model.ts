@@ -8,23 +8,6 @@ export interface SocketMessage {
   zoom: number;
 }
 
-type Sort = 'random' | 'comment';
-
-export interface LocalSearchRequest {
-  query: string;
-  display?: number;
-  start?: number;
-  sort?: Sort;
-}
-
-export interface LocalSearchResponse {
-  lastBuildDate: string;
-  total: number;
-  start: number;
-  display: number;
-  items: LocalItem[];
-}
-
 export interface LocalItem {
   title: string;
   link?: string;
@@ -35,4 +18,12 @@ export interface LocalItem {
   roadAddress: string;
   mapx: string;
   mapy: string;
+}
+
+export interface Board {
+  id: number;
+  uuid: string;
+  title: string;
+  createdAt: Date;
+  updatedAt: Date;
 }

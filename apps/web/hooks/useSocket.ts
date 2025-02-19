@@ -1,4 +1,4 @@
-import {SocketMessage} from '@type/services';
+import {SocketMessage} from '@type/model';
 import {useEffect, useRef, useState, useCallback} from 'react';
 
 export const useWebSocket = (url: string) => {
