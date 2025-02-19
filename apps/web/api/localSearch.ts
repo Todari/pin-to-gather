@@ -1,5 +1,22 @@
-import {LocalSearchRequest, LocalSearchResponse} from '@type/services';
+import {LocalItem} from '@type/model';
 import {http} from '@utils/http';
+
+type Sort = 'random' | 'comment';
+
+export interface LocalSearchRequest {
+  query: string;
+  display?: number;
+  start?: number;
+  sort?: Sort;
+}
+
+export interface LocalSearchResponse {
+  lastBuildDate: string;
+  total: number;
+  start: number;
+  display: number;
+  items: LocalItem[];
+}
 
 export const getLocalSearch = ({params}: {params: LocalSearchRequest}) => {
   const searchParams = new URLSearchParams({
