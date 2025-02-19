@@ -1,16 +1,27 @@
+import {QUERY_KEY} from '@constants/queryKey';
+import {useRequestGetLocalSearch} from '@hooks/useRequestGetLocalSearch';
 import {VStack, Text} from '@pin-to-gather/ui';
-import {LocalItem} from '@type/services';
+import {useQuery} from '@tanstack/react-query';
+import {LocalItem} from '@type/model';
 
-interface Props {
+interface ListProps {
+  query: string;
+}
+
+interface ItemProps {
   item: LocalItem;
 }
 
-export function LocaleSearchItem({item}: Props) {
+export function LocaleSearchItemList({query}: ListProps) {
+  const {data} = useRequestGetLocalSearch(query);
+  return <VStack gap={4}>{data?.items.map((item: LocalItem) => <LocaleSearchItem item={item} />)}</VStack>;
+}
+
+export function LocaleSearchItem({item}: ItemProps) {
   return (
-    <VStack gap={4}>
-      <Text size="bodyBold">{item.title}</Text>
-      <Text size="caption">{item.description}</Text>
-      <Text size="caption">{item.roadAddress}</Text>
+    <VStack gap={2} p={4}>
+      <Text textSize="bodyBold">{item.title}</Text>
+      <Text textSize="caption">{item.roadAddress}</Text>
     </VStack>
   );
 }

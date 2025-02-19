@@ -1,25 +1,33 @@
-// import { Input, VStack } from "@pin-to-gather/ui";
-// import { useState } from "react";
-// import { useRequestGetLocalSearch } from "../../hooks/useRequestGetLocalSearch";
-// import { LocaleSearchItem } from "@components/LocaleSearchItem/LocaleSearchItem";
+import {LocaleSearchItemList} from '@components/LocaleSearchItem/LocaleSearchItem';
+import {Button, Container, HStack, Input, Text, useTheme, VStack} from '@pin-to-gather/ui';
+import {useState} from 'react';
 
-// export function Header() {
-//   const [query, setQuery] = useState<string>("");
+export function Header() {
+  const {theme} = useTheme();
+  const [query, setQuery] = useState('');
+  const [showSearchResult, setShowSearchResult] = useState(false);
 
-//   const handleChangeQuery = (e: React.ChangeEvent<HTMLInputElement>) => {
-//     setQuery(e.target.value);
-//   }
+  const handleChangeQuery = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setQuery(e.target.value);
+    if (query.length === 0) {
+      setShowSearchResult(false);
+    }
+  };
 
-//   const {data, isLoading} = useRequestGetLocalSearch(query);
+  const handleSearch = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setShowSearchResult(true);
+  };
 
-//   // console.log(data);
-
-//   return <VStack>
-//   <Input value={query} onChange={handleChangeQuery} />
-//   <VStack>
-//     {data?.items.map((item) => (
-//       <LocaleSearchItem item={item} />
-//     ))}
-//   </VStack>
-//   </VStack>;
-// }
+  return (
+    <VStack gap={8} bg={theme.colors.white} p="1rem 2rem">
+      <form onSubmit={handleSearch} style={{width: '100%'}}>
+        <HStack gap={8}>
+          <Input placeholder="지역 검색하기" value={query} onChange={handleChangeQuery} />
+          <Button type="submit">검색</Button>
+        </HStack>
+      </form>
+      {showSearchResult && <LocaleSearchItemList query={query} />}
+    </VStack>
+  );
+}

@@ -8,6 +8,7 @@ import {useRequestGetLocalSearch} from '../../hooks/useRequestGetLocalSearch';
 import {coordToNaverLatLng, localMapXYToLatLng} from '@utils/map';
 import {Maker} from '@components/Maker/Maker';
 import ReactDOMServer from 'react-dom/server';
+import {Header} from '@components/Header/Header';
 
 export default function BoardPage() {
   const boardUuid = useParams().boardUuid as string;
@@ -37,7 +38,7 @@ export default function BoardPage() {
 
   return (
     <>
-      <input value={query} onChange={handleChangeQuery} />
+      <Header />
       <Map ref={mapRef} boardUuid={boardUuid} userId={userId} />
     </>
   );
