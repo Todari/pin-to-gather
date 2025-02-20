@@ -1,6 +1,5 @@
 import {Theme} from '@theme/theme.type';
 import {ColorKeys} from '@token/colors';
-
 import TYPOGRAPHY from '@token/typography';
 
 export type TextSize = keyof typeof TYPOGRAPHY;

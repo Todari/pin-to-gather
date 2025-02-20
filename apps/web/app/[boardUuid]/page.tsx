@@ -4,7 +4,6 @@ import {useParams} from 'next/navigation';
 import {MapBoard} from '@components/MapBoard/MapBoard';
 import {useEffect, useRef, useState} from 'react';
 import {NaverMap} from '@type/map';
-import {useRequestGetLocalSearch} from '../../hooks/useRequestGetLocalSearch';
 import {coordToNaverLatLng, localMapXYToLatLng} from '@utils/map';
 import {Maker} from '@components/Maker/Maker';
 import ReactDOMServer from 'react-dom/server';

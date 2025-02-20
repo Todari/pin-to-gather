@@ -1,10 +1,10 @@
 import React, {createContext, useContext, useState, ReactNode} from 'react';
 import {Global} from '@emotion/react';
+import {COLORS} from '@token/colors';
+import {TYPOGRAPHY} from '@token/typography';
 
 import {Theme} from './theme.type';
 import {GlobalStyle} from './GlobalStyle';
-import {COLORS} from '@token/colors';
-import {TYPOGRAPHY} from '@token/typography';
 
 interface ThemeContextProps {
   theme: Theme;
@@ -18,7 +18,8 @@ const defaultTheme: Theme = {
 const ThemeContext = createContext<ThemeContextProps | undefined>(undefined);
 
 export const DesignProvider: React.FC<{children: ReactNode}> = ({children}) => {
-  const [theme, _] = useState<Theme>(defaultTheme);
+  const [theme] = useState<Theme>(defaultTheme);
+
   return (
     <ThemeContext.Provider value={{theme}}>
       <Global styles={GlobalStyle} />

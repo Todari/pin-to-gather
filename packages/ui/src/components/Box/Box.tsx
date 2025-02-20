@@ -1,4 +1,3 @@
-/** @jsxImportSource @emotion/react */
 import {boxStyle} from './Box.style';
 import {BoxProps} from './Box.type';
 
