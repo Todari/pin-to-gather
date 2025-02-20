@@ -1,8 +1,13 @@
 import {LocaleSearchItemList} from '@components/LocaleSearchItem/LocaleSearchItem';
 import {Button, Container, HStack, Input, Text, useTheme, VStack} from '@pin-to-gather/ui';
+import {LocalItem} from '@type/model';
 import {useState} from 'react';
 
-export function Header() {
+interface Props {
+  onSearch: (result: LocalItem[]) => void;
+}
+
+export function Header({onSearch}: Props) {
   const {theme} = useTheme();
   const [query, setQuery] = useState('');
   const [showSearchResult, setShowSearchResult] = useState(false);
@@ -27,7 +32,7 @@ export function Header() {
           <Button type="submit">검색</Button>
         </HStack>
       </form>
-      {showSearchResult && <LocaleSearchItemList query={query} />}
+      {showSearchResult && <LocaleSearchItemList query={query} onSearch={onSearch} />}
     </VStack>
   );
 }

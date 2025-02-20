@@ -9,20 +9,14 @@ import {coordToNaverLatLng, localMapXYToLatLng} from '@utils/map';
 import {Maker} from '@components/Maker/Maker';
 import ReactDOMServer from 'react-dom/server';
 import {Header} from '@components/Header/Header';
+import {LocalItem} from '@type/model';
 
 export default function BoardPage() {
   const boardUuid = useParams().boardUuid as string;
-  const userId = '3';
-  // const userId = crypto.randomUUID();
-  const [query, setQuery] = useState<string>('');
+  // const userId = '3';
+  const userId = crypto.randomUUID();
+  const [localSearchResult, setLocalSearchResult] = useState<LocalItem[]>([]);
   const mapRef = useRef<NaverMap | null>(null);
-
-  const handleChangeQuery = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setQuery(e.target.value);
-  };
-
-  //TODO: header에서의 검색 결과와 동기화 하기
-  const {data, isLoading} = useRequestGetLocalSearch(query);
 
   const markers = useRef<naver.maps.Marker[]>([]);
 
@@ -32,7 +26,7 @@ export default function BoardPage() {
     markers.current = [];
 
     // 새로운 마커 생성
-    data?.items.forEach(item => {
+    localSearchResult.forEach(item => {
       const marker = new window.naver.maps.Marker({
         position: coordToNaverLatLng(localMapXYToLatLng(item.mapy, item.mapx)),
         map: mapRef.current ?? undefined,
@@ -51,11 +45,11 @@ export default function BoardPage() {
       markers.current.forEach(marker => marker.setMap(null));
       markers.current = [];
     };
-  }, [data?.items]);
+  }, [localSearchResult]);
 
   return (
     <>
-      <Header />
+      <Header onSearch={setLocalSearchResult} />
       <MapBoard ref={mapRef} boardUuid={boardUuid} userId={userId} />
     </>
   );
