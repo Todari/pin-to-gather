@@ -41,7 +41,7 @@ export function MapBoard({boardUuid, userId, ref: mapRef}: Props) {
 
   const initializeMap = useCallback(() => {
     const mapOptions = {
-      center: new window.naver.maps.LatLng(127.105399, 37.3595704),
+      center: new window.naver.maps.LatLng(37.3595704, 127.105399),
       zoom: 12,
     };
     const map = new window.naver.maps.Map('map', mapOptions);
