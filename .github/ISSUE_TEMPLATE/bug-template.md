@@ -1,7 +1,7 @@
 ---
 name: Bug Template
 about: 버그를 제보하는 템플릿
-title: ""
+title: ''
 labels: 🚨bug
 assignees: ''
 ---
