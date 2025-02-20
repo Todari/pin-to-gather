@@ -1,10 +1,8 @@
-/** @jsxImportSource @emotion/react */
-
 import React, {forwardRef, useImperativeHandle, useRef} from 'react';
+import {useTheme} from '@theme/DesignProvider';
 
 import {buttonContentStyle, buttonStyle} from './Button.style';
 import {ButtonProps} from './Button.type';
-import {useTheme} from '@theme/DesignProvider';
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button(
   {

@@ -1,6 +1,3 @@
-/** @jsxImportSource @emotion/react */
-import {forwardRef} from 'react';
-
 import {containerStyle} from './Container.style';
 import {ContainerProps} from './Container.type';
 

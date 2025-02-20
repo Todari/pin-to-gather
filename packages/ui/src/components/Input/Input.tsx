@@ -1,4 +1,3 @@
-/** @jsxImportSource @emotion/react */
 import {Text} from '@components/Text';
 import {useTheme} from '@theme/DesignProvider';
 import React, {forwardRef, useEffect, useImperativeHandle, useRef, useState} from 'react';

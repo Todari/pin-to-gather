@@ -1,9 +1,9 @@
 import {commonTransition} from '@components/style/animation';
 import {css} from '@emotion/react';
 import {Typography, TYPOGRAPHY} from '@token/typography';
+import {ColorTokens} from '@token/colors';
 
 import type {TextStylePropsWithTheme} from './Text.type';
-import {ColorTokens} from '@token/colors';
 
 export const textStyles = ({textSize, textColor, theme, responsive}: Required<TextStylePropsWithTheme>) => {
   const responsiveStyle = (baseStyle: Typography) => {
