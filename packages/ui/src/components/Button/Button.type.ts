@@ -1,4 +1,4 @@
-import {Theme} from '@theme/theme.type';
+import {Theme} from '../../theme/theme.type';
 
 export type ButtonSize = 'sm' | 'md' | 'lg';
 export type ButtonVariants = 'primary' | 'secondary' | 'ghost';

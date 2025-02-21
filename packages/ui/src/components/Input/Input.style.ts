@@ -1,6 +1,9 @@
-import {commonTransition, errorTextAnimationStyle, labelTextAnimationStyle} from '@components/style/animation';
 import {css} from '@emotion/react';
-import {InputSize, Theme} from '@pin-to-gather/ui';
+
+import {commonTransition, errorTextAnimationStyle, labelTextAnimationStyle} from '../../components/style/animation';
+import {Theme} from '../../theme/theme.type';
+
+import {InputSize} from './Input.type';
 
 export const inputLayoutStyle = css({
   display: 'flex',

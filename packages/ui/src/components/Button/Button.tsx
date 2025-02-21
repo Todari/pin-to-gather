@@ -1,5 +1,6 @@
 import React, {forwardRef, useImperativeHandle, useRef} from 'react';
-import {useTheme} from '@theme/DesignProvider';
+
+import {useTheme} from '../../theme/DesignProvider';
 
 import {buttonContentStyle, buttonStyle} from './Button.style';
 import {ButtonProps} from './Button.type';

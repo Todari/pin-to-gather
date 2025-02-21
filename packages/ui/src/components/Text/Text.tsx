@@ -1,5 +1,6 @@
 import {ElementType} from 'react';
-import {useTheme} from '@theme/DesignProvider';
+
+import {useTheme} from '../../theme/DesignProvider';
 
 import {TextProps} from './Text.type';
 import {textStyles} from './Text.style';

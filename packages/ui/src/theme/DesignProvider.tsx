@@ -1,7 +1,8 @@
 import React, {createContext, useContext, useState, ReactNode} from 'react';
 import {Global} from '@emotion/react';
-import {COLORS} from '@token/colors';
-import {TYPOGRAPHY} from '@token/typography';
+
+import {COLORS} from '../token/colors';
+import {TYPOGRAPHY} from '../token/typography';
 
 import {Theme} from './theme.type';
 import {GlobalStyle} from './GlobalStyle';

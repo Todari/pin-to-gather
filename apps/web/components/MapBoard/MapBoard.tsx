@@ -46,7 +46,7 @@ export function MapBoard({boardUuid, userId, ref: mapRef}: Props) {
       zoom: 12,
     };
     const map = new window.naver.maps.Map('map', mapOptions);
-    mapRef.current = map;
+    (mapRef as React.MutableRefObject<NaverMap | null>).current = map;
 
     naver.maps.Event.addListener(map, 'bounds_changed', () => {
       handleChangeMapInfo();
