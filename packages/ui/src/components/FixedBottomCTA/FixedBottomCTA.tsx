@@ -1,6 +1,6 @@
-import {useTheme} from '@theme/DesignProvider';
-
-import {HStack, VStack} from '../Stack';
+import {useTheme} from '../../theme/DesignProvider';
+import VStack from '../Stack/VStack';
+import HStack from '../Stack/HStack';
 
 import {fixedBottomCTAStyle} from './FixedBottomCTA.style';
 import {FixedBottomCTAProps} from './FixedBottomCTA.type';

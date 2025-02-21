@@ -1,7 +1,8 @@
-import {commonTransition} from '@components/style/animation';
 import {css} from '@emotion/react';
-import {Typography, TYPOGRAPHY} from '@token/typography';
-import {ColorTokens} from '@token/colors';
+
+import {commonTransition} from '../../components/style/animation';
+import {ColorTokens} from '../../token/colors';
+import {Typography, TYPOGRAPHY} from '../../token/typography';
 
 import type {TextStylePropsWithTheme} from './Text.type';
 
