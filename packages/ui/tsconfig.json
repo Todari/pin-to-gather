@@ -1,15 +1,10 @@
 {
   "extends": "@pin-to-gather/typescript-config/react-library.json",
   "compilerOptions": {
-    "jsx": "react-jsx",
     "jsxImportSource": "@emotion/react",
     "baseUrl": ".",
     "paths": {
-      "@/": ["src/"],
-      "@components/*": ["src/components/*"],
-      "@token/*": ["src/token/*"],
-      "@theme/*": ["src/theme/*"],
-      "@utils/*": ["src/utils/*"]
+      "_ui/*": ["src/*"]
     }
   },
   "include": ["."],

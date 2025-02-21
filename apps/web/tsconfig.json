@@ -1,6 +1,8 @@
 {
   "extends": "@pin-to-gather/typescript-config/nextjs.json",
   "compilerOptions": {
+    "jsxImportSource": "@emotion/react",
+    "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"],
       "@api/*": ["./api/*"],
@@ -17,6 +19,6 @@
       }
     ]
   },
-  "include": ["**/*.ts", "**/*.tsx", "next-env.d.ts", "next.config.js", ".next/types/**/*.ts"],
+  "include": ["**/*.ts", "**/*.tsx", "next-env.d.ts", "next.config.js", ".next/types/**/*.ts", "../packages/ui"],
   "exclude": ["node_modules"]
 }

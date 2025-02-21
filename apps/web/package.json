@@ -12,6 +12,7 @@
     "check-types": "tsc --noEmit"
   },
   "dependencies": {
+    "@emotion/react": "^11.14.0",
     "@pin-to-gather/ui": "workspace:*",
     "@tanstack/react-query": "^5.66.3",
     "axios": "^1.7.9",
