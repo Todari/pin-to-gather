@@ -3,8 +3,9 @@
 import {useCallback, useEffect, useRef} from 'react';
 import {NaverMap, NaverRectangle} from '@type/map';
 import Script from 'next/script';
-import {useWebSocket} from '../../hooks/useSocket';
 import {boundsToNaverBounds} from '@utils/map';
+
+import {useWebSocket} from '../../hooks/useSocket';
 
 interface Props {
   boardUuid: string;
@@ -24,33 +25,33 @@ export function MapBoard({boardUuid, userId, ref: mapRef}: Props) {
   const rectRefs = useRef<ClientRect[]>([]);
   const {messages, sendMessage} = useWebSocket(`${WS_BASE_URL}/${boardUuid}?userId=${userId}`);
 
-  const handleChangeMapInfo = () => {
-    if (mapRef.current) {
-      sendMessage({
-        userId,
-        boardUuid,
-        center: {x: mapRef.current.getCenter().x, y: mapRef.current.getCenter().y},
-        bounds: {
-          min: {x: mapRef.current.getBounds().minX(), y: mapRef.current.getBounds().minY()},
-          max: {x: mapRef.current.getBounds().maxX(), y: mapRef.current.getBounds().maxY()},
-        },
-        zoom: mapRef.current.getZoom(),
-      });
-    }
-  };
-
   const initializeMap = useCallback(() => {
+    const handleChangeMapInfo = () => {
+      if (mapRef.current) {
+        sendMessage({
+          userId,
+          boardUuid,
+          center: {x: mapRef.current.getCenter().x, y: mapRef.current.getCenter().y},
+          bounds: {
+            min: {x: mapRef.current.getBounds().minX(), y: mapRef.current.getBounds().minY()},
+            max: {x: mapRef.current.getBounds().maxX(), y: mapRef.current.getBounds().maxY()},
+          },
+          zoom: mapRef.current.getZoom(),
+        });
+      }
+    };
+
     const mapOptions = {
       center: new window.naver.maps.LatLng(37.3595704, 127.105399),
       zoom: 12,
     };
     const map = new window.naver.maps.Map('map', mapOptions);
-    mapRef.current = map;
+    (mapRef as React.MutableRefObject<NaverMap | null>).current = map;
 
     naver.maps.Event.addListener(map, 'bounds_changed', () => {
       handleChangeMapInfo();
     });
-  }, []);
+  }, [mapRef, sendMessage, userId, boardUuid]);
 
   useEffect(() => {
     const checkExistClient = (userId: string) => {
@@ -76,7 +77,7 @@ export function MapBoard({boardUuid, userId, ref: mapRef}: Props) {
           ),
         );
     }
-  }, [messages]);
+  }, [messages, mapRef]);
 
   useEffect(() => {
     return () => {

@@ -1,4 +1,4 @@
-import {Theme} from '@theme/theme.type';
+import {Theme} from '../../theme/theme.type';
 
 export type InputSize = 'sm' | 'md' | 'lg';
 

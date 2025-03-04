@@ -1,4 +1,3 @@
-/** @jsxImportSource @emotion/react */
 import {DesignProvider, GlobalStyle} from '@pin-to-gather/ui';
 import {css, Global} from '@emotion/react';
 

@@ -1,7 +1,8 @@
-/** @jsxImportSource @emotion/react */
-import {Text} from '@components/Text';
-import {useTheme} from '@theme/DesignProvider';
 import React, {forwardRef, useEffect, useImperativeHandle, useRef, useState} from 'react';
+import {cx} from '@emotion/css';
+
+import {Text} from '../Text/Text';
+import {useTheme} from '../../theme/DesignProvider';
 
 import {
   inputBoxStyle,
@@ -23,6 +24,7 @@ export const Input: React.FC<InputProps> = forwardRef<HTMLInputElement, InputPro
     labelText,
     errorText = '',
     hasError,
+    className,
     ...htmlProps
   }: InputProps,
   ref,
@@ -48,24 +50,24 @@ export const Input: React.FC<InputProps> = forwardRef<HTMLInputElement, InputPro
   }, []);
 
   return (
-    <div css={inputLayoutStyle}>
+    <div className={cx(inputLayoutStyle, className)}>
       {(labelText || errorText) && (
-        <div css={labelLayoutStyle}>
+        <div className={labelLayoutStyle}>
           {labelText && (
-            <Text textSize="caption" css={labelTextStyle({theme, hasFocus, hasValue})}>
+            <Text textSize="caption" className={labelTextStyle({theme, hasFocus, hasValue})}>
               {hasFocus || hasValue ? labelText : ''}
             </Text>
           )}
           {errorText && (
-            <Text textSize="caption" css={errorTextStyle({theme, hasError, hasFocus})}>
+            <Text textSize="caption" className={errorTextStyle({theme, hasError, hasFocus})}>
               {errorText}
             </Text>
           )}
         </div>
       )}
-      <div css={inputBoxStyle({theme, hasFocus, hasError, inputSize})}>
+      <div className={inputBoxStyle({theme, hasFocus, hasError, inputSize})}>
         <input
-          css={inputStyle({theme, hasFocus, hasError})}
+          className={inputStyle({theme, hasFocus, hasError})}
           ref={inputRef}
           value={value}
           onChange={onChange}

@@ -1,6 +1,8 @@
 {
   "extends": "@pin-to-gather/typescript-config/react-app.json",
   "include": ["."],
-  "exclude": ["dist", "build", "node_modules"]
+  "exclude": ["dist", "build", "node_modules"],
+  "compilerOptions": {
+    "jsx": "react-jsx"
+  }
 }
-

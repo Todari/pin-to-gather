@@ -1,5 +1,6 @@
-import {css} from '@emotion/react';
-import {attributeWithUnit} from '@utils/attribute';
+import {css} from '@emotion/css';
+
+import {attributeWithUnit} from '../../utils/attribute';
 
 import {HStackProps, StackProps, VStackProps} from './Stack.type';
 

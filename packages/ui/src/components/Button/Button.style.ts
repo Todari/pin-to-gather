@@ -1,8 +1,9 @@
-import {css} from '@emotion/react';
-import {Theme} from '@theme/theme.type';
+import {css} from '@emotion/css';
+
+import {Theme} from '../../theme/theme.type';
+import {setDarker, setLighter} from '../../utils/colors';
 
 import {ButtonStyleProps, ButtonSize, ButtonVariants, ButtonDisplay} from './Button.type';
-import {setDarker, setLighter} from '@utils/colors';
 
 export const buttonContentStyle = css({
   display: 'flex',

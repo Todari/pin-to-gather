@@ -1,5 +1,5 @@
 import {LocaleSearchItemList} from '@components/LocaleSearchItem/LocaleSearchItem';
-import {Button, Container, HStack, Input, Text, useTheme, VStack} from '@pin-to-gather/ui';
+import {Button, HStack, Input, useTheme, VStack} from '@pin-to-gather/ui';
 import {LocalItem} from '@type/model';
 import {useState} from 'react';
 

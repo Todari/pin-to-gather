@@ -1,7 +1,5 @@
 import {CSSProperties} from 'react';
-
 import {Stack, Box} from '@pin-to-gather/ui';
-
 import type {Meta, StoryObj} from '@storybook/react';
 
 const meta = {

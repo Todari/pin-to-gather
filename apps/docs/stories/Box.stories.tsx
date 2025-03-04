@@ -1,6 +1,4 @@
-/** @jsxImportSource @emotion/react */
 import {Box} from '@pin-to-gather/ui';
-
 import type {Meta, StoryObj} from '@storybook/react';
 
 const meta = {
@@ -78,7 +76,7 @@ Box 컴포넌트는 기본적인 레이아웃을 구성하는데 사용되는 �
   m="1rem"
   br="15px"
   b="3px solid #4a90e2"
-  css={{
+  className={css({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',

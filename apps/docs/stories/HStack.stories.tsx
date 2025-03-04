@@ -1,6 +1,4 @@
-/** @jsxImportSource @emotion/react */
 import {HStack, Box} from '@pin-to-gather/ui';
-
 import type {Meta, StoryObj} from '@storybook/react';
 
 const meta = {
@@ -111,7 +109,7 @@ width, height, justify를 수정하려면 Stack 컴포넌트를 사용해야 합
 export default meta;
 type Story = StoryObj<typeof HStack>;
 
-const Divider = () => <Box w={1} h="100%" bg="#ddd" css={{flexShrink: 0}} />;
+const Divider = () => <Box w={1} h="100%" bg="#ddd" style={{flexShrink: 0}} />;
 
 const DemoBox = ({children}: {children: React.ReactNode}) => (
   <Box w={64} h={64} bg="#f0f0f0" b="1px solid #ddd" br={8}>

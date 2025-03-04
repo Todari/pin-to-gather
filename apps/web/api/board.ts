@@ -3,6 +3,7 @@ import {API_BASE_URL} from './config';
 import {Board} from '@type/model';
 
 export interface PostBoardRequest {
+  [key: string]: string;
   title: string;
 }
 

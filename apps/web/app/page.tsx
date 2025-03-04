@@ -7,7 +7,6 @@ import {useRequestPostBoard} from '@hooks/useRequestPostBoard';
 
 export default function MainPage() {
   const [boardTitle, setBoardTitle] = useState<string>('');
-  const [errorMessage, setErrorMessage] = useState<string>('');
   const router = useRouter();
 
   const {mutate: postBoard, data, isSuccess, isError, error} = useRequestPostBoard();
@@ -27,9 +26,9 @@ export default function MainPage() {
       router.push(`/${data?.uuid}`);
     }
     if (isError) {
-      setErrorMessage(error.message);
+      // setErrorMessage(error.message);
     }
-  }, [isSuccess, data, isError, error]);
+  }, [isSuccess, data, isError, error, router]);
 
   return (
     <Container maxW={480}>

@@ -1,5 +1,4 @@
 import {Input, InputProps} from '@pin-to-gather/ui';
-
 import type {Meta, StoryObj} from '@storybook/react';
 import {useState} from 'react';
 
