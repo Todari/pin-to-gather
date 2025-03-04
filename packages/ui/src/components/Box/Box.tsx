@@ -1,4 +1,5 @@
 import {cx} from '@emotion/css';
+
 import {boxStyle} from './Box.style';
 import {BoxProps} from './Box.type';
 

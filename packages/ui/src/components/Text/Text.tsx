@@ -1,10 +1,10 @@
 import {ElementType} from 'react';
+import {cx} from '@emotion/css';
 
 import {useTheme} from '../../theme/DesignProvider';
 
 import {TextProps} from './Text.type';
 import {textStyles} from './Text.style';
-import {cx} from '@emotion/css';
 
 export const Text = ({
   textSize = 'body',

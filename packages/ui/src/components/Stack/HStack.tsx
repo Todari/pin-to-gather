@@ -1,8 +1,8 @@
 import React from 'react';
+import {cx} from '@emotion/css';
 
 import {hStackStyle} from './Stack.style';
 import {HStackProps} from './Stack.type';
-import {cx} from '@emotion/css';
 
 export function HStack({
   children,

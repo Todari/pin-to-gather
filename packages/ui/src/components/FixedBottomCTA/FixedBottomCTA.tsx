@@ -1,10 +1,11 @@
+import {cx} from '@emotion/css';
+
 import {useTheme} from '../../theme/DesignProvider';
 import VStack from '../Stack/VStack';
 import HStack from '../Stack/HStack';
 
 import {fixedBottomCTAStyle} from './FixedBottomCTA.style';
 import {FixedBottomCTAProps} from './FixedBottomCTA.type';
-import {cx} from '@emotion/css';
 
 export const FixedBottomCTA = ({children, direction = 'column', className, ...props}: FixedBottomCTAProps) => {
   const {theme} = useTheme();
@@ -17,6 +18,7 @@ export const FixedBottomCTA = ({children, direction = 'column', className, ...pr
           gap="1rem"
           bg={theme.colors.white}
           className={cx(fixedBottomCTAStyle, className)}
+          {...props}
         >
           {children}
         </VStack>
@@ -26,6 +28,7 @@ export const FixedBottomCTA = ({children, direction = 'column', className, ...pr
           gap="1rem"
           bg={theme.colors.white}
           className={cx(fixedBottomCTAStyle, className)}
+          {...props}
         >
           {children}
         </HStack>

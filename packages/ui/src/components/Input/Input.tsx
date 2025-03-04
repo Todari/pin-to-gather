@@ -1,4 +1,5 @@
 import React, {forwardRef, useEffect, useImperativeHandle, useRef, useState} from 'react';
+import {cx} from '@emotion/css';
 
 import {Text} from '../Text/Text';
 import {useTheme} from '../../theme/DesignProvider';
@@ -12,7 +13,6 @@ import {
   labelLayoutStyle,
 } from './Input.style';
 import {InputProps} from './Input.type';
-import {cx} from '@emotion/css';
 
 export const Input: React.FC<InputProps> = forwardRef<HTMLInputElement, InputProps>(function Input(
   {
