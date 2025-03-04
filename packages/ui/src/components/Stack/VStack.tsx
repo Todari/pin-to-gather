@@ -2,12 +2,25 @@ import React from 'react';
 
 import {vStackStyle} from './Stack.style';
 import {VStackProps} from './Stack.type';
+import {cx} from '@emotion/css';
 
-export function VStack({children, gap = 0, align = 'flex-start', divider, p, m, br, b, bg, ...props}: VStackProps) {
+export function VStack({
+  children,
+  gap = 0,
+  align = 'flex-start',
+  divider,
+  p,
+  m,
+  br,
+  b,
+  bg,
+  className,
+  ...props
+}: VStackProps) {
   const childrenArray = React.Children.toArray(children);
 
   return (
-    <div css={vStackStyle({gap, align, p, m, br, b, bg})} {...props}>
+    <div className={cx(vStackStyle({gap, align, p, m, br, b, bg}), className)} {...props}>
       {childrenArray.map((child, index) => (
         <React.Fragment key={React.isValidElement(child) ? child.key || index : index}>
           {child}

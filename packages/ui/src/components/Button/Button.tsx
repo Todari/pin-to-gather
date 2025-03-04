@@ -4,6 +4,7 @@ import {useTheme} from '../../theme/DesignProvider';
 
 import {buttonContentStyle, buttonStyle} from './Button.style';
 import {ButtonProps} from './Button.type';
+import {cx} from '@emotion/css';
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button(
   {
@@ -13,6 +14,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button
     disabled,
     children,
     isLoading,
+    className,
     ...htmlProps
   }: ButtonProps,
   ref?: React.Ref<HTMLButtonElement>,
@@ -25,7 +27,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button
 
   return (
     <button
-      css={buttonStyle({variants, buttonSize, display, theme})}
+      className={cx(buttonStyle({variants, buttonSize, display, theme}), className)}
       ref={buttonRef}
       {...htmlProps}
       disabled={isLoading ? true : disabled}
@@ -33,7 +35,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button
       aria-label={isLoading ? '로딩 중' : htmlProps['aria-label']}
       //TODO: (@Todari) loading styling
     >
-      <span css={buttonContentStyle}>{children}</span>
+      <span className={buttonContentStyle}>{children}</span>
     </button>
   );
 });

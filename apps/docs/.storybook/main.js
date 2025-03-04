@@ -9,9 +9,6 @@ const config = {
   addons: [getAbsolutePath('@storybook/addon-links'), getAbsolutePath('@storybook/addon-essentials')],
   framework: {
     name: getAbsolutePath('@storybook/react-vite'),
-    options: {
-      jsxImportSource: '@emotion/react',
-    },
   },
 
   core: {},

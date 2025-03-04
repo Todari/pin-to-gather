@@ -1,3 +1,4 @@
+import {cx} from '@emotion/css';
 import {boxStyle} from './Box.style';
 import {BoxProps} from './Box.type';
 
@@ -13,10 +14,11 @@ export function Box({
   bg,
   fixed = false,
   center = false,
+  className,
   ...props
 }: BoxProps) {
   return (
-    <div css={boxStyle({w, h, z, p, m, br, b, bg, fixed, center})} {...props}>
+    <div className={cx(boxStyle({w, h, z, p, m, br, b, bg, fixed, center}), className)} {...props}>
       {children}
     </div>
   );

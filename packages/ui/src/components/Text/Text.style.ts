@@ -1,4 +1,4 @@
-import {css} from '@emotion/react';
+import {css} from '@emotion/css';
 
 import {commonTransition} from '../../components/style/animation';
 import {ColorTokens} from '../../token/colors';
@@ -35,12 +35,14 @@ export const textStyles = ({textSize, textColor, theme, responsive}: Required<Te
     tiny: responsiveStyle(TYPOGRAPHY.tiny),
   };
 
-  const colorStyle = css({color: theme.colors[textColor as keyof ColorTokens]});
+  const colorStyle = css`
+    color: ${theme.colors[textColor as keyof ColorTokens]};
+  `;
 
-  const baseStyle = css({
-    whiteSpace: 'pre-line',
-    commonTransition,
-  });
+  const baseStyle = css`
+    white-space: pre-line;
+    ${commonTransition}
+  `;
 
   return [style[textSize as keyof typeof style], colorStyle, baseStyle];
 };

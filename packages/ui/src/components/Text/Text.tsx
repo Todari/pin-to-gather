@@ -4,8 +4,16 @@ import {useTheme} from '../../theme/DesignProvider';
 
 import {TextProps} from './Text.type';
 import {textStyles} from './Text.style';
+import {cx} from '@emotion/css';
 
-export const Text = ({textSize = 'body', children, textColor = 'black', responsive = false, ...props}: TextProps) => {
+export const Text = ({
+  textSize = 'body',
+  children,
+  textColor = 'black',
+  responsive = false,
+  className,
+  ...props
+}: TextProps) => {
   const {theme} = useTheme();
 
   let TagComponent: ElementType = 'p';
@@ -16,7 +24,7 @@ export const Text = ({textSize = 'body', children, textColor = 'black', responsi
   else if (textSize === 'bodyBold' || textSize === 'body') TagComponent = 'h4';
 
   return (
-    <TagComponent css={textStyles({textSize, textColor, theme, responsive})} {...props}>
+    <TagComponent className={cx(textStyles({textSize, textColor, theme, responsive}), className)} {...props}>
       {children}
     </TagComponent>
   );

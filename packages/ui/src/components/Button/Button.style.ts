@@ -1,4 +1,4 @@
-import {css} from '@emotion/react';
+import {css} from '@emotion/css';
 
 import {Theme} from '../../theme/theme.type';
 import {setDarker, setLighter} from '../../utils/colors';

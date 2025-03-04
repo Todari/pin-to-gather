@@ -32,7 +32,6 @@ export const config = [
     settings: {
       react: {
         version: 'detect',
-        jsxImportSource: '@emotion/react',
       },
     },
     rules: {
