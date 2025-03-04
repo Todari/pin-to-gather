@@ -1,4 +1,5 @@
 'use client';
+
 import {DesignProvider} from '@pin-to-gather/ui';
 import {QueryClientProvider, QueryClient} from '@tanstack/react-query';
 import {useState} from 'react';
